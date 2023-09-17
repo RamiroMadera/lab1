@@ -81,6 +81,7 @@ GEM
     erubi (1.11.0)
     globalid (1.0.0)
       activesupport (>= 5.0)
+    hirb (0.7.3)
     i18n (1.12.0)
       concurrent-ruby (~> 1.0)
     io-console (0.5.11)
@@ -188,11 +189,13 @@ GEM
 PLATFORMS
   arm64-darwin-21
   arm64-darwin-22
+  x64-mingw-ucrt
 
 DEPENDENCIES
   bootsnap
   cssbundling-rails
   debug
+  hirb
   jbuilder
   jsbundling-rails
   pg (~> 1.1)
