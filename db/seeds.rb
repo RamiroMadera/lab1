@@ -2,8 +2,8 @@ Tweet.destroy_all
 Monster.destroy_all
 
 # Start IDs sequence at 1 for both monsters and tweets tables
-ActiveRecord::Base.connection.execute("ALTER SEQUENCE monsters_id_seq RESTART WITH 1")
-ActiveRecord::Base.connection.execute("ALTER SEQUENCE tweets_id_seq RESTART WITH 1")
+#ActiveRecord::Base.connection.execute("ALTER SEQUENCE monsters_id_seq RESTART WITH 1")
+#ActiveRecord::Base.connection.execute("ALTER SEQUENCE tweets_id_seq RESTART WITH 1")
 
 dracula = Monster.create(name: "Dracula", description: "Chupa sange. Hincha del rojo. Libertario. ALA")
 king_kong = Monster.create(name: "King Kong", description: "Gorila gigante. #VamosAVolver. BocaJrs.")
