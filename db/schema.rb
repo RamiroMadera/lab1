@@ -10,12 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_08_14_164745) do
+ActiveRecord::Schema[7.0].define(version: 2023_10_06_232145) do
+  create_table "attacks", force: :cascade do |t|
+    t.integer "victim_id", null: false
+    t.integer "monster_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["monster_id"], name: "index_attacks_on_monster_id"
+    t.index ["victim_id"], name: "index_attacks_on_victim_id"
+  end
+
   create_table "monsters", force: :cascade do |t|
-    t.string "name"
+    t.string "name", null: false
     t.text "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "scareLevel"
   end
 
   create_table "tweets", force: :cascade do |t|
@@ -26,5 +36,15 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_14_164745) do
     t.index ["monster_id"], name: "index_tweets_on_monster_id"
   end
 
+  create_table "victims", force: :cascade do |t|
+    t.string "name", null: false
+    t.integer "age"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_foreign_key "attacks", "monsters"
+  add_foreign_key "attacks", "victims"
   add_foreign_key "tweets", "monsters"
+  add_foreign_key "tweets", "monsters", on_delete: :cascade
 end
