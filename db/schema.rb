@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_10_06_232145) do
+ActiveRecord::Schema[7.0].define(version: 2023_10_07_022355) do
   create_table "attacks", force: :cascade do |t|
     t.integer "victim_id", null: false
     t.integer "monster_id", null: false
@@ -26,6 +26,16 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_06_232145) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "scareLevel"
+    t.boolean "private_account"
+    t.date "birthday"
+  end
+
+  create_table "new_tweets", force: :cascade do |t|
+    t.string "content"
+    t.integer "monster_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["monster_id"], name: "index_new_tweets_on_monster_id"
   end
 
   create_table "tweets", force: :cascade do |t|
@@ -45,6 +55,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_06_232145) do
 
   add_foreign_key "attacks", "monsters"
   add_foreign_key "attacks", "victims"
+  add_foreign_key "new_tweets", "monsters"
   add_foreign_key "tweets", "monsters"
   add_foreign_key "tweets", "monsters", on_delete: :cascade
 end
